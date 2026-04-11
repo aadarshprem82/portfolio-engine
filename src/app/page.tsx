@@ -8,9 +8,12 @@ export default function Home() {
   const [mode, setMode] = useState<"recruiter" | "engineer">("recruiter");
   const [query, setQuery] = useState("");
   const [result, setResult] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSearch = async () => {
     if (!query) return;
+
+    setLoading(true);
 
     const res = await fetch("/api/search", {
       method: "POST",
@@ -19,11 +22,15 @@ export default function Home() {
 
     const data = await res.json();
     setResult(data.result);
+
+    setLoading(false);
   };
 
   const handleRelatedClick = async (query: string) => {
     setQuery(query);
 
+    setLoading(true);
+
     const res = await fetch("/api/search", {
       method: "POST",
       body: JSON.stringify({ query }),
@@ -31,6 +38,8 @@ export default function Home() {
 
     const data = await res.json();
     setResult(data.result);
+
+    setLoading(false);
   };
 
   return (
@@ -59,6 +68,11 @@ export default function Home() {
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSearch();
+          }
+        }}
         placeholder="Ask about me..."
         className="w-full max-w-xl p-4 text-white rounded border"
       />
@@ -70,12 +84,16 @@ export default function Home() {
         Search
       </button>
 
-      {result && (
+      {loading && <p>Thinking...</p>}
+
+      {result && result.data ? (
         <ResponsePanel
           data={result.data}
           mode={mode}
           onRelatedClick={handleRelatedClick}
         />
+      ) : result && (
+        <p>No relevant results found. Try another query.</p>
       )}
 
     </div>
