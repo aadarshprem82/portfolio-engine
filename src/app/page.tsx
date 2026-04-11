@@ -50,7 +50,9 @@ export default function Home() {
       <div className="flex gap-4 mb-4">
         <button
           onClick={() => setMode("recruiter")}
-          className={`px-4 py-2 border rounded ${mode === "recruiter" ? "bg-white text-black" : ""
+          className={`px-4 py-2 rounded-md border text-sm ${mode === "recruiter"
+            ? "bg-black text-white"
+            : "border-gray-300 text-gray-600"
             }`}
         >
           Recruiter
@@ -58,7 +60,9 @@ export default function Home() {
 
         <button
           onClick={() => setMode("engineer")}
-          className={`px-4 py-2 border rounded ${mode === "engineer" ? "bg-white text-black" : ""
+          className={`px-4 py-2 rounded-md border text-sm ${mode === "engineer"
+              ? "bg-black text-white"
+              : "border-gray-300 text-gray-600"
             }`}
         >
           Engineer
@@ -74,12 +78,12 @@ export default function Home() {
           }
         }}
         placeholder="Ask about me..."
-        className="w-full max-w-xl p-4 text-white rounded border"
+        className="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
       />
 
       <button
         onClick={handleSearch}
-        className="border px-6 py-1 bg-white text-black rounded"
+        className="border px-6 py-1 rounded bg-white text-black hover:bg-black hover:text-white transition"
       >
         Search
       </button>

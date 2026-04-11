@@ -6,7 +6,7 @@ type Props = {
 
 export default function ResponsePanel({ data, mode, onRelatedClick }: Props) {
   return (
-    <div className="mt-10 w-full max-w-2xl text-left border text-white p-6 rounded-lg space-y-6">
+    <div className="border border-gray-300 rounded-lg p-6 space-y-6">
 
       {/* 🧠 Title */}
       <h2 className="text-2xl font-bold">{data.title}</h2>
@@ -60,7 +60,7 @@ export default function ResponsePanel({ data, mode, onRelatedClick }: Props) {
               <button
                 key={i}
                 onClick={() => onRelatedClick(item)}
-                className="px-3 py-1 border rounded hover:bg-gray-200"
+                className="px-3 py-1 border rounded-md hover:text-gray-600"
               >
                 {item}
               </button>
