@@ -50,7 +50,7 @@ export default function Home() {
       <div className="flex gap-4 mb-4">
         <button
           onClick={() => setMode("recruiter")}
-          className={`px-4 py-2 rounded-md border text-sm ${mode === "recruiter"
+          className={`px-4 py-2 rounded-md border text-sm cursor-pointer hover:text-white ${mode === "recruiter"
             ? "bg-black text-white"
             : "border-gray-300 text-gray-600"
             }`}
@@ -60,7 +60,7 @@ export default function Home() {
 
         <button
           onClick={() => setMode("engineer")}
-          className={`px-4 py-2 rounded-md border text-sm ${mode === "engineer"
+          className={`px-4 py-2 rounded-md border text-sm cursor-pointer hover:text-white ${mode === "engineer"
               ? "bg-black text-white"
               : "border-gray-300 text-gray-600"
             }`}
@@ -83,7 +83,7 @@ export default function Home() {
 
       <button
         onClick={handleSearch}
-        className="border px-6 py-1 rounded bg-white text-black hover:bg-black hover:text-white transition"
+        className="border px-6 py-1 rounded bg-white text-black cursor-pointer hover:bg-black hover:text-white transition"
       >
         Search
       </button>

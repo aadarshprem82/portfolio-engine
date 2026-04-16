@@ -8,10 +8,8 @@ export default function ResponsePanel({ data, mode, onRelatedClick }: Props) {
   return (
     <div className="border border-gray-300 rounded-lg p-6 space-y-6">
 
-      {/* 🧠 Title */}
       <h2 className="text-2xl font-bold">{data.title}</h2>
 
-      {/* 💼 Experience */}
       <div>
         <p className="font-semibold mb-2">What I’ve done:</p>
         <ul className="list-disc ml-5 space-y-1">
@@ -23,7 +21,6 @@ export default function ResponsePanel({ data, mode, onRelatedClick }: Props) {
         </ul>
       </div>
 
-      {/* 🚀 Projects */}
       {data.projects?.length > 0 && (
         <div>
           <p className="font-semibold mb-2">Key Projects:</p>
@@ -37,13 +34,11 @@ export default function ResponsePanel({ data, mode, onRelatedClick }: Props) {
         </div>
       )}
 
-      {/* 🧠 Thought Process */}
       <div>
         <p className="font-semibold mb-2">How I think:</p>
         <p>{data.thoughts}</p>
       </div>
 
-      {/* 📊 Confidence */}
       <div>
         <p className="font-semibold">Confidence:</p>
         <p>
@@ -51,7 +46,6 @@ export default function ResponsePanel({ data, mode, onRelatedClick }: Props) {
         </p>
       </div>
 
-      {/* 🔁 Related Queries */}
       {data.related?.length > 0 && (
         <div>
           <p className="font-semibold mb-2">Explore more:</p>
