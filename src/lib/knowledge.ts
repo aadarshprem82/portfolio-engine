@@ -17,7 +17,234 @@ export type KnowledgeItem = {
   };
 };
 
-export const knowledge: KnowledgeItem[] = [
+export const knowledge: KnowledgeItem[] = [{
+    id: "portfolio_engine_architecture",
+    keywords: [
+      "portfolio engine",
+      "architecture",
+      "system design",
+      "query engine",
+      "knowledge graph",
+      "project structure",
+      "design this project",
+      "how is this built"
+    ],
+    data: {
+      title: "Portfolio Engine Architecture",
+      experiences: [
+        "Designed the portfolio as a query-driven system instead of a static multi-page website.",
+        "Structured the application into retrieval, API, rendering, and UI layers for clean separation of concerns.",
+        "Used Next.js App Router to combine frontend UI and backend routes in one codebase."
+      ],
+      projects: [
+        {
+          name: "Portfolio Engine",
+          impact: "Created an interactive portfolio experience with scalable architecture."
+        }
+      ],
+      thoughts:
+        "I wanted the portfolio to represent how I think as an engineer, not just display information. So I approached it like a product with clear layers: input, retrieval, response generation, and presentation.",
+      confidence: {
+        level: "high",
+        reason: "End-to-end architecture was personally designed and implemented."
+      },
+      related: [
+        "search system",
+        "next.js architecture",
+        "frontend system design"
+      ]
+    }
+  },
+
+  {
+    id: "portfolio_engine_search",
+    keywords: [
+      "search",
+      "query",
+      "query engine",
+      "matching",
+      "retrieval",
+      "intent detection",
+      "keyword search",
+      "how does search work"
+    ],
+    data: {
+      title: "Search and Query Engine",
+      experiences: [
+        "Built a custom query engine to map user input to relevant experience nodes.",
+        "Implemented keyword scoring to identify strongest matches from the knowledge base.",
+        "Added fallback logic for weak matches to maintain useful responses."
+      ],
+      projects: [
+        {
+          name: "Intent Matching Engine",
+          impact: "Enabled users to search experience using natural language queries."
+        }
+      ],
+      thoughts:
+        "I started with deterministic keyword matching because it is transparent, fast, and easy to improve later into fuzzy search or embeddings.",
+      confidence: {
+        level: "high",
+        reason: "Search layer implemented directly inside the project."
+      },
+      related: [
+        "semantic search",
+        "ai fallback",
+        "full stack"
+      ]
+    }
+  },
+
+  {
+    id: "portfolio_engine_uiux",
+    keywords: [
+      "ui",
+      "ux",
+      "design",
+      "frontend",
+      "interface",
+      "user experience",
+      "response panel",
+      "tailwind"
+    ],
+    data: {
+      title: "UI / UX Design",
+      experiences: [
+        "Built a minimal interface focused on clarity, spacing, and fast interaction.",
+        "Used Tailwind CSS for responsive styling and consistent design tokens.",
+        "Created a structured response panel to present insights instead of raw text."
+      ],
+      projects: [
+        {
+          name: "Interactive Response UI",
+          impact: "Improved readability and made the portfolio feel like a product."
+        }
+      ],
+      thoughts:
+        "I intentionally avoided flashy visuals and focused on product-like usability. The interface should feel clean, confident, and easy to explore.",
+      confidence: {
+        level: "high",
+        reason: "UI decisions were iterated directly during development."
+      },
+      related: [
+        "tailwind css",
+        "minimal ui",
+        "frontend performance"
+      ]
+    }
+  },
+
+  {
+    id: "portfolio_engine_modes",
+    keywords: [
+      "mode",
+      "recruiter mode",
+      "engineer mode",
+      "dual mode",
+      "audience",
+      "different views"
+    ],
+    data: {
+      title: "Audience-Aware Mode Switching",
+      experiences: [
+        "Implemented Recruiter mode for concise, impact-focused summaries.",
+        "Implemented Engineer mode for deeper technical explanations and reasoning.",
+        "Used a single knowledge source while changing output depth based on audience."
+      ],
+      projects: [
+        {
+          name: "Mode Toggle System",
+          impact: "Made the same project useful for technical and non-technical viewers."
+        }
+      ],
+      thoughts:
+        "Different audiences need different levels of detail. Instead of changing content manually, I designed a system that adapts presentation dynamically.",
+      confidence: {
+        level: "high",
+        reason: "Feature implemented directly in the response layer."
+      },
+      related: [
+        "product thinking",
+        "user personas",
+        "response panel"
+      ]
+    }
+  },
+
+  {
+    id: "portfolio_engine_ai_layer",
+    keywords: [
+      "ai",
+      "gemini",
+      "fallback",
+      "llm",
+      "chatbot",
+      "ai integration",
+      "generative ai"
+    ],
+    data: {
+      title: "AI Fallback Layer",
+      experiences: [
+        "Integrated Gemini API as a fallback when direct knowledge matches are weak.",
+        "Designed hybrid logic: deterministic retrieval first, AI generation second.",
+        "Used prompts that keep responses grounded in personal project context."
+      ],
+      projects: [
+        {
+          name: "Hybrid Retrieval + AI System",
+          impact: "Improved coverage while preserving trust and relevance."
+        }
+      ],
+      thoughts:
+        "AI should assist the system, not replace it. I prioritized knowledge-first responses and only used generation when retrieval confidence was low.",
+      confidence: {
+        level: "medium",
+        reason: "Architecture planned and partially integrated with room for future upgrades."
+      },
+      related: [
+        "rag system",
+        "semantic search",
+        "prompt engineering"
+      ]
+    }
+  },
+
+  {
+    id: "portfolio_engine_deployment",
+    keywords: [
+      "deploy",
+      "vercel",
+      "production",
+      "hosting",
+      "live project",
+      "deployment"
+    ],
+    data: {
+      title: "Deployment and Production Readiness",
+      experiences: [
+        "Prepared the application for deployment using Vercel.",
+        "Used Next.js full-stack structure to simplify production hosting.",
+        "Focused on maintainable code structure for future enhancements."
+      ],
+      projects: [
+        {
+          name: "Live Portfolio Deployment",
+          impact: "Made the project publicly accessible with minimal ops overhead."
+        }
+      ],
+      thoughts:
+        "I chose tools that reduce infrastructure friction so I could focus on product quality and iteration speed.",
+      confidence: {
+        level: "high",
+        reason: "Deployment path is straightforward and production-friendly."
+      },
+      related: [
+        "next.js hosting",
+        "vercel setup",
+        "scalability"
+      ]
+    }
+  },
   {
     id: "frontend_fullstack",
     keywords: ["react", "javascript", "ui", "ux", "frontend", "fullstack"],
