@@ -9,11 +9,16 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const [aiAnswer, setAiAnswer] = useState<string | null>(null);
+  const [responseType, setResponseType] = useState<"knowledge" | "ai" | null>(null);
+  const [related, setRelated] = useState<string[]>([]);
 
   const handleSearch = async () => {
     if (!query) return;
 
     setLoading(true);
+
+    setResponseType(null);
 
     const res = await fetch("/api/search", {
       method: "POST",
@@ -21,7 +26,18 @@ export default function Home() {
     });
 
     const data = await res.json();
-    setResult(data.result);
+    if (data.type === "knowledge") {
+      setResponseType("knowledge");
+      setResult(data.result);
+      setAiAnswer(null);
+      setRelated(data.result.data.related || []);
+    }
+    else {
+      setResponseType("ai");
+      setAiAnswer(data.answer);
+      setResult(null);
+      setRelated(data.related || []);
+    }
 
     setLoading(false);
   };
@@ -31,13 +47,26 @@ export default function Home() {
 
     setLoading(true);
 
+    setResponseType(null);
+
     const res = await fetch("/api/search", {
       method: "POST",
       body: JSON.stringify({ query }),
     });
 
     const data = await res.json();
-    setResult(data.result);
+    if (data.type === "knowledge") {
+      setResponseType("knowledge");
+      setResult(data.result);
+      setAiAnswer(null);
+      setRelated(data.result.data.related || []);
+    }
+    else {
+      setResponseType("ai");
+      setAiAnswer(data.answer);
+      setResult(null);
+      setRelated(data.related || []);
+    }
 
     setLoading(false);
   };
@@ -61,8 +90,8 @@ export default function Home() {
         <button
           onClick={() => setMode("engineer")}
           className={`px-4 py-2 rounded-md border text-sm cursor-pointer hover:text-white ${mode === "engineer"
-              ? "bg-black text-white"
-              : "border-gray-300 text-gray-600"
+            ? "bg-black text-white"
+            : "border-gray-300 text-gray-600"
             }`}
         >
           Engineer
@@ -90,14 +119,15 @@ export default function Home() {
 
       {loading && <p>Thinking...</p>}
 
-      {result && result.data ? (
+      {responseType && (
         <ResponsePanel
-          data={result.data}
+          type={responseType}
+          data={result?.data}
+          aiAnswer={aiAnswer}
+          related={related}
           mode={mode}
           onRelatedClick={handleRelatedClick}
         />
-      ) : result && (
-        <p>No relevant results found. Try another query.</p>
       )}
 
     </div>

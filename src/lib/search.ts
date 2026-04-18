@@ -3,7 +3,7 @@ import { knowledge } from "./knowledge";
 export function searchKnowledge(query: string) {
     const normalizedQuery = query.toLowerCase();
 
-    let bestMatch = null;
+    let bestMatch = knowledge[0];
     let maxMatches = 0;
 
     for (const item of knowledge) {
@@ -21,22 +21,5 @@ export function searchKnowledge(query: string) {
         }
     }
 
-    if (!bestMatch) {
-        return {
-            id: "no_result",
-            data: {
-                title: "No direct match found",
-                experiences: [],
-                projects: [],
-                thoughts: "Try asking about backend, frontend, or system design.",
-                confidence: {
-                    level: "low",
-                    reason: "Query did not match any known domain"
-                },
-                related: []
-            }
-        };
-    }
-
-    return bestMatch;
+    return { bestMatch, score: maxMatches };
 }
