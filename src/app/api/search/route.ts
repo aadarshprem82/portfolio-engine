@@ -1,11 +1,16 @@
 import { searchKnowledge } from "@/lib/search";
 import { generateFallbackAnswer } from "@/lib/ai";
+import { getStats } from "@/lib/cache";
 
+
+export async function GET() {
+  return Response.json(getStats());
+}
 
 export async function POST(req: Request) {
   try {
     const { query } = await req.json();
-    
+
     if (!query) {
       return Response.json(
         { error: "Query is required" },
@@ -23,7 +28,7 @@ export async function POST(req: Request) {
       });
     }
     console.log("Best Match", bestMatch);
-    
+
     const relatedSuggestions = bestMatch?.data?.related || [
       "system reliability", "ui ux", "web apps", "fullstack"
     ]
@@ -38,7 +43,7 @@ export async function POST(req: Request) {
 
   } catch (error) {
     return Response.json(
-      { error: "Something went wrong "+ error },
+      { error: "Something went wrong " + error },
       { status: 500 }
     );
   }
